@@ -1,3 +1,10 @@
+/*
+Time Complexity : O(m+n)
+Space Complexity: (m+n)
+
+*/
+
+
 public class LeetCode1813 {
     public static bool AreSentencesSimilar(string sentence1, string sentence2) {
         
