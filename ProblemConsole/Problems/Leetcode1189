@@ -1,0 +1,7 @@
+ublic class Leetcode1189 {
+    public int MaxNumberOfBalloons(string text) {
+      Dictionary<char,int> textDict= new();
+      
+
+    }
+}
