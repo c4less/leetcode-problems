@@ -1,0 +1,32 @@
+public class Leetcode1405 {
+    public string LongestDiverseString(int a, int b, int c) {
+       var pq = new PriorityQueue<char,int>(Comparer<int>.Create((x,y)=>y-x));
+        if(a > 0) pq.Enqueue('a',a);
+        if(b >0) pq.Enqueue('b',b);
+        if(c>0) pq.Enqueue('c',c);
+
+        var sbResult = new StringBuilder();
+        while(pq.Count > 0)
+        {
+            pq.TryDequeue(out char ch, out int freq);
+            if(sbResult.Length > 1 && sbResult[^1]==ch && sbResult[^2]==ch)
+            {       
+                if(pq.Count == 0) break;
+                else
+                {
+                    pq.TryDequeue(out char ch2, out int freq2);
+                    sbResult.Append(ch2);
+                    freq2-=1;
+                    if(freq2!=0) { pq.Enqueue(ch2,freq2); }
+                }
+            }
+            else
+            {
+                sbResult.Append(ch);
+                freq-=1;
+            }
+            if(freq!=0) { pq.Enqueue(ch, freq); }
+        }
+        return $"{sbResult}";
+    }
+}
